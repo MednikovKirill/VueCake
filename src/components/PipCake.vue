@@ -2,10 +2,12 @@
 <!-- eslint-disable vue/valid-v-model --> 
   <div class="container">
     <div class="sample">
+       <div> <img src="../images/tortiZak.jpg"/>
+       </div>
         <div class="Mednikov-class"> 
             <h2 class="Mednikov-text">
                 СОЗДАНИЕ ПИРОГА
-            </h2> 
+            </h2>                                           
         </div>
         <hr>
         <div class="x" style="text-align: left"> 
@@ -18,7 +20,9 @@
         </button>
         </div>
         <hr>
+        <div class="imagAline"> <img class="imageCake" src="../images/upCake.png"/> </div>
         <div class="row">
+           
             <div class="col pickImg">
                 <div class="cake">
                     <div 
@@ -49,7 +53,7 @@
                                 <option :value="key" 
                                         v-bind:key = key
                                         v-for="(lt, key) in layersTypes">
-                                    {{ lt.label }}
+                                             {{ lt.label }} 
                                 </option>
                             </select>
                         </td>
@@ -95,7 +99,8 @@ export default {
   name: 'app',
   data() {
     return {
-        layers: [],
+        layers: [
+            ],
         layersTypes: {
             biscuit: {
                 pricelsm: 50,
@@ -108,7 +113,7 @@ export default {
             curd: {
                 pricelsm: 60,
                 label: 'Творожный'
-            }
+            },
         },
         defaultLayerType: 'biscuit',
         defaultHeight: 4,
@@ -126,11 +131,14 @@ export default {
   methods: {
     addLayer(){
         if (this.layers.length > 6) { return }
-        this.layers.push({
-            id: Date.now(),
-            type: this.defaultLayerType,
-            height: this.defaultHeight
-        }); 
+        this.layers = [
+            ...this.layers,
+            {
+                id: Date.now(),
+                type: this.defaultLayerType,
+                height: this.defaultHeight
+            },
+        ]
     },
     updateValue(event, i) {
       const value = event.target.value
@@ -160,6 +168,12 @@ export default {
     color: white;
     text-align: center;
     margin-left: 20px;
+}
+.imagAline {
+    margin-left: 20px;
+    text-align: left;
+    position: relative;
+    bottom: -4px;
 }
 .btn {
     background-color: white;
@@ -214,5 +228,14 @@ input, select {
 }
 .row {
     display: flex;
+}
+.imageCake {
+  width: 500px;
+  height: 150px;
+}
+.centralCake {
+
+  max-width: 1280px;
+
 }
 </style>

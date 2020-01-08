@@ -14,8 +14,6 @@ import PipCake from './components/PipCake.vue'
 export default {
   name: 'app',
   components: {
-    HelloWorld, 
-    ViewHelWord,
     PipCake
   },
 }
